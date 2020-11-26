@@ -10,7 +10,7 @@ module.exports = {
       const professor = await Professor.findOne({ CPD }).select('+Senha');
       console.log(professor)
 
-      if(md5(Senha) !== professor.senha)
+      if(md5(Senha) !== professor.Senha)
         return res.status(401).json({error: 'Invalid Password'});
 
       if(professor){
@@ -39,7 +39,7 @@ module.exports = {
       const aluno = await Aluno.findOne({ CPD }).select('+Senha');
       console.log(aluno)
 
-      if(md5(Senha) !== aluno.senha)
+      if(md5(Senha) !== aluno.Senha)
         return res.status(401).json({error: 'Invalid Password'});
 
       if(aluno){
