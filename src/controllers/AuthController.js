@@ -7,7 +7,7 @@ module.exports = {
   async LoginProfessor(req, res){
     const { CPD, Senha} = req.body;
     try {
-      const professor = await Professor.findOne({ CPD }).select('+senha');
+      const professor = await Professor.findOne({ CPD }).select('+Senha');
       console.log(professor)
 
       if (!professor)
@@ -39,7 +39,7 @@ module.exports = {
   async LoginAluno(req, res){
     const { CPD, Senha} = req.body;
     try {
-      const aluno = await Aluno.findOne({ CPD }).select('+senha');
+      const aluno = await Aluno.findOne({ CPD }).select('+Senha');
       console.log(aluno)
 
       if (!aluno)
