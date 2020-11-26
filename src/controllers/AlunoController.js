@@ -17,10 +17,13 @@ module.exports = {
   },
   
   async getUser(req,res){
-    const { cpd } = req.headers;
-    console.log(req.headers)
-    Aluno.findOne({CPD: cpd})
-      .then(resonse => res.json(resonse.data).status(201))
-      .catch(error => res.json(error.message).status(400))    
+    try {
+      const { cpd } = req.headers;
+      const user = await Aluno.findOne({CPD: cpd})
+
+      return res.json(user).status(200)
+    } catch (error) {
+      res.json(error).status(400)
+    }
   },
 }
