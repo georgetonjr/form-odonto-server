@@ -18,8 +18,9 @@ module.exports = {
   
   async getUser(req,res){
     const { CPD } = req.headers;
+    console.log(req.headers)
     Aluno.findOne({CPD})
     .then(res => res.status(201).json(res.data))
-    .catch(error => res.status(400).json(error))    
+    .catch(error => res.status(400).json(error.message))    
   },
 }
