@@ -23,6 +23,7 @@ module.exports = {
           token: token,
           Nome: professor.Nome,
           Id: professor._id,
+          CPD: professor.CPD,
         });
       }
       else {
@@ -51,7 +52,8 @@ module.exports = {
         res.status(201).json({
           token: token,
           Nome: aluno.Nome,
-          Id: aluno._id
+          Id: aluno._id,
+          CPD: aluno.CPD,
         });
       }
       else {
