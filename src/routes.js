@@ -19,4 +19,7 @@ routes.post('/siginaluno', AuthController.LoginAluno);
 routes.post('/refreshaluno', Auth.authorize, AuthController.refreshTokenAluno);
 routes.post('/refreshprofessor', Auth.authorize, AuthController.refreshTokenProfessor);
 
+routes.get('/getaluno', AlunoController.getUser);
+routes.get('/getprofessor', ProfessorController.getUser);
+
 module.exports = routes;

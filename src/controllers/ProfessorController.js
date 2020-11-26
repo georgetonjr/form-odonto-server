@@ -15,4 +15,11 @@ module.exports = {
     .then(() => res.status(201).json('Usuario cadastrado com sucesso!'))
     .catch(error => res.status(400).json(error))
   },
+
+  async getUser(req,res){
+    const { CPD } = req.headers;
+    Professor.findOne({CPD})
+    .then(res => res.status(201).json(res.data))
+    .catch(error => res.status(400).json(error))    
+  },
 }
