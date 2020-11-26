@@ -8,6 +8,7 @@ module.exports = {
     const { CPD, Senha} = req.body;
     try {
       const professor = await Professor.findOne({ CPD }).select('+senha');
+      console.log(professor)
 
       if (!professor)
         return res.status(400).json({ error: 'User not found'});
@@ -39,6 +40,7 @@ module.exports = {
     const { CPD, Senha} = req.body;
     try {
       const aluno = await Aluno.findOne({ CPD }).select('+senha');
+      console.log(aluno)
 
       if (!aluno)
         return res.status(400).json({ error: 'User not found'});
