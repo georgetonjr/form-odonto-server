@@ -10,9 +10,6 @@ module.exports = {
       const professor = await Professor.findOne({ CPD }).select('+Senha');
       console.log(professor)
 
-      if (!professor)
-        return res.status(400).json({ error: 'User not found'});
-
       if(md5(Senha) !== professor.senha)
         return res.status(401).json({error: 'Invalid Password'});
 
@@ -41,9 +38,6 @@ module.exports = {
     try {
       const aluno = await Aluno.findOne({ CPD }).select('+Senha');
       console.log(aluno)
-
-      if (!aluno)
-        return res.status(400).json({ error: 'User not found'});
 
       if(md5(Senha) !== aluno.senha)
         return res.status(401).json({error: 'Invalid Password'});
