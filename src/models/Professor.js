@@ -16,6 +16,7 @@ const ProfessorSchema = new mongoose.Schema({
   Senha: {
     type: String,
     required: true,
+    select: false,
   },
 
   active: {

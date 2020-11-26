@@ -7,7 +7,14 @@ module.exports = {
   async LoginProfessor(req, res){
     const { CPD, Senha} = req.body;
     try {
-      const professor = await Professor.findOne({CPD, Senha: md5(Senha)});
+      const professor = await Professor.findOne({ CPD }).select('+senha');
+
+      if (!professor)
+        return res.status(400).json({ error: 'User not found'});
+
+      if(md5(Senha) !== professor.senha)
+        return res.status(401).json({error: 'Invalid Password'});
+
       if(professor){
         const token = await AuthService.generateToken({
           id: professor._id,
@@ -31,7 +38,14 @@ module.exports = {
   async LoginAluno(req, res){
     const { CPD, Senha} = req.body;
     try {
-      const aluno = await Aluno.findOne({CPD, Senha: md5(Senha)});
+      const aluno = await Aluno.findOne({ CPD }).select('+senha');
+
+      if (!aluno)
+        return res.status(400).json({ error: 'User not found'});
+
+      if(md5(Senha) !== aluno.senha)
+        return res.status(401).json({error: 'Invalid Password'});
+
       if(aluno){
         const token = await AuthService.generateToken({
           id: aluno._id,
