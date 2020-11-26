@@ -20,7 +20,7 @@ module.exports = {
     const { cpd } = req.headers;
     console.log(req.headers)
     Aluno.findOne({CPD: cpd})
-      .then(res => res.json(res.data).status(201))
-      .catch(error => res.json(error.message).status(400))    
+      .then(res => res.send(res.data).status(201))
+      .catch(error => res.send(error.message).status(400))    
   },
 }
