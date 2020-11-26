@@ -19,7 +19,7 @@ module.exports = {
   async getUser(req,res){
     const { cpd } = req.headers;
     Professor.findOne({CPD: cpd})
-    .then(res => res.status(201).json(res.data))
-    .catch(error => res.status(400).json(error))    
+    .then(res => res.json(res.data).status(201))
+    .catch(error => res.json(error).status(400))    
   },
 }
