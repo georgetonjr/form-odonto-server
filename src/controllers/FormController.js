@@ -12,8 +12,8 @@ module.exports = {
     })
     .then(() => res.status(201).json('Formulario enviado com sucesso!!'))
     .catch(error => {
-      res.status(400).json(error.message)
-      console.log(error.message)
+      res.status(400).json(error)
+      console.log(error)
     })
   },
 
@@ -50,4 +50,20 @@ module.exports = {
       res.status(400).json(error)  
     }
   },
+
+  async changeFormStatus(req, res){
+    try {
+      const {id, status} = req.body
+      console.log(req.body)
+      const form =  await Form.findOne({ _id: id });
+      form.status = status;
+      form.save()
+      console.log(form)
+      res.status(200).json(form)
+    } catch (error) {
+      console.log(error)
+      res.status(400).json(error)  
+    }
+  },
+
 }
