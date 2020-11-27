@@ -26,6 +26,10 @@ const FormSchema = new mongoose.Schema({
   ref: 'Aluno'
  },
 
+ aprovado:{
+  type: Boolean,
+ },
+
  professor: {
   type: mongoose.Schema.Types.ObjectId,
   ref: 'Professor'
