@@ -26,4 +26,13 @@ module.exports = {
       res.json(error).status(400)
     }
   },
+
+  async getAllProf(req, res){
+    try {
+      const professores = await Professor.find()
+      return res.json(professores).status(200)
+    } catch (error) {
+      res.json(error).status(400) 
+    }
+  },
 }

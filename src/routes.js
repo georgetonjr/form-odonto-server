@@ -21,5 +21,6 @@ routes.post('/refreshprofessor', Auth.authorize, AuthController.refreshTokenProf
 
 routes.get('/getaluno', AlunoController.getUser);
 routes.get('/getprofessor', ProfessorController.getUser);
+routes.get('/getallprof', ProfessorController.getAllProf);
 
 module.exports = routes;
