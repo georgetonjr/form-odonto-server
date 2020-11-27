@@ -7,7 +7,7 @@ const FormSchema = new mongoose.Schema({
    required: true,
  },
 
- nameform: {
+ nameForm: {
    type: String,
    required: true,
  },

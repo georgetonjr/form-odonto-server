@@ -6,7 +6,7 @@ module.exports = {
     console.log(req.body)
     Form.create({
       form,
-      nameform,
+      nameForm: nameform,
       aluno,
       professor
     })
@@ -50,4 +50,20 @@ module.exports = {
       res.status(400).json(error)  
     }
   },
+
+  async changeFormStatus(req, res){
+    try {
+      const {id, status} = req.body
+      console.log(req.body)
+      const form =  await Form.findOne({ _id: id });
+      form.status = status;
+      form.save()
+      console.log(form)
+      res.status(200).json(form)
+    } catch (error) {
+      console.log(error)
+      res.status(400).json(error)  
+    }
+  },
+
 }
