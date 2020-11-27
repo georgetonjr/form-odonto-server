@@ -11,6 +11,10 @@ const FormSchema = new mongoose.Schema({
    type: String,
    required: true,
  },
+ 
+ obs:{
+   type: String,
+ },
 
  status: {
   type: Boolean,

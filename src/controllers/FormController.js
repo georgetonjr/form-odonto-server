@@ -53,9 +53,10 @@ module.exports = {
 
   async changeFormStatus(req, res){
     try {
-      const {id, status} = req.body
+      const {id, status, obs} = req.body
       console.log(req.body)
       const form =  await Form.findOne({ _id: id });
+      form.obs = obs;
       form.status = status;
       form.save()
       console.log(form)
