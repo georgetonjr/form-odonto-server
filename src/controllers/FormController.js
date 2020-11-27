@@ -3,7 +3,7 @@ const Form = require('../models/Form');
 module.exports = {
   async store (req, res) {
     const { form, nameform, aluno, professor } = req.body
-
+    console.log(req.body)
     Form.create({
       form,
       nameform,
@@ -11,7 +11,10 @@ module.exports = {
       professor
     })
     .then(() => res.status(201).json('Formulario enviado com sucesso!!'))
-    .catch(error => res.status(400).json(error))
+    .catch(error => {
+      res.status(400).json(error)
+      console.log(error)
+    })
   },
 
   async getProf (req, res) {
