@@ -59,6 +59,7 @@ module.exports = {
       const form =  await Form.findOne({ _id: id });
       form.obs = obs;
       form.status = status;
+      form.aprovado = status;
       form.save()
       console.log(form)
       res.status(200).json(form)
