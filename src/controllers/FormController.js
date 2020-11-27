@@ -6,7 +6,7 @@ module.exports = {
     console.log(req.body)
     Form.create({
       form,
-      nameform,
+      nameForm: nameform,
       aluno,
       professor
     })
