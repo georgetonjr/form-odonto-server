@@ -3,6 +3,7 @@ const express = require('express');
 const ProfessorController = require('./controllers/ProfessorController');
 const AlunoController = require('./controllers/AlunoController');
 const AuthController = require('./controllers/AuthController');
+const FormController = require('./controllers/FormController');
 const Auth = require('./functions/auth');
 const routes = express.Router();
 
@@ -22,5 +23,9 @@ routes.post('/refreshprofessor', Auth.authorize, AuthController.refreshTokenProf
 routes.get('/getaluno', AlunoController.getUser);
 routes.get('/getprofessor', ProfessorController.getUser);
 routes.get('/getallprof', ProfessorController.getAllProf);
+
+routes.post('/form/create', FormController.store);
+routes.get('/form/getaluno', FormController.getAluno);
+routes.get('/form/getprof', FormController.getProf);
 
 module.exports = routes;
