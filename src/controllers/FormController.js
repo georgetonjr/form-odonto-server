@@ -12,8 +12,8 @@ module.exports = {
     })
     .then(() => res.status(201).json('Formulario enviado com sucesso!!'))
     .catch(error => {
-      res.status(400).json(error)
-      console.log(error)
+      res.status(400).json(error.message)
+      console.log(error.message)
     })
   },
 
