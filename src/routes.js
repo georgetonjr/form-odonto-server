@@ -27,5 +27,6 @@ routes.get('/getallprof', ProfessorController.getAllProf);
 routes.post('/form/create', FormController.store);
 routes.get('/form/getaluno', FormController.getAluno);
 routes.get('/form/getprof', FormController.getProf);
+routes.get('/form/getformbyid', FormController.getFormById);
 
 module.exports = routes;

@@ -38,4 +38,17 @@ module.exports = {
       res.status(400).json(error)  
     }
   },
+
+  async getFormById(req, res){
+    const { id } = req.headers
+
+    try {
+      const form = await Form.findOne({ _id: id }).populate('aluno');
+      console.log(form)
+      res.status(200).json(form)
+    } catch (error) {
+      res.status(400).json(error)  
+    }
+  },
+  }
 }
