@@ -6,7 +6,7 @@ module.exports = {
     console.log(req.body)
     Form.create({
       form,
-      nameForm: nameform,
+      nameform,
       aluno,
       professor
     })
@@ -20,7 +20,7 @@ module.exports = {
   async getProf (req, res) {
     const { professor } = req.headers
     try {
-      const forms = await Form.find({ professor }).populate('aluno');
+      const forms = await Form.find({ professor: professor }).populate('aluno');
 
       res.status(200).json(forms)
     } catch (error) {
@@ -31,7 +31,7 @@ module.exports = {
   async getAluno (req, res) {
     const { aluno } = req.headers
     try {
-      const forms = await Form.find({ aluno }).populate('professor');
+      const forms = await Form.find({ aluno: aluno }).populate('professor');
 
       res.status(200).json(forms)
     } catch (error) {
