@@ -7,7 +7,7 @@ const FormSchema = new mongoose.Schema({
    required: true,
  },
 
- nameForm: {
+ nameform: {
    type: String,
    required: true,
  },
@@ -26,6 +26,11 @@ const FormSchema = new mongoose.Schema({
   type: mongoose.Schema.Types.ObjectId,
   ref: 'Professor'
  },
+
+ createdAt: {
+  type: Date,
+  default: Date.now,
+},
 
 });
 module.exports = mongoose.model('Form', FormSchema);
