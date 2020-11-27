@@ -31,8 +31,9 @@ module.exports = {
   async getAluno (req, res) {
     const { aluno } = req.headers
     try {
+      console.log(req.headers)
       const forms = await Form.find({ aluno: aluno }).populate('professor');
-
+      console.log(forms)
       res.status(200).json(forms)
     } catch (error) {
       res.status(400).json(error)  
