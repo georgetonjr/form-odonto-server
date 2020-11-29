@@ -13,7 +13,7 @@ module.exports = {
     .then(() => res.status(201).json('Formulario enviado com sucesso!!'))
     .catch(error => {
       res.status(400).json(error)
-      console.log(error)
+      console.log(error.message)
     })
   },
 
@@ -31,9 +31,7 @@ module.exports = {
   async getAluno (req, res) {
     const { aluno } = req.headers
     try {
-      console.log(req.headers)
       const forms = await Form.find({ aluno: aluno }).populate('professor');
-      console.log(forms)
       res.status(200).json(forms)
     } catch (error) {
       res.status(400).json(error)  
@@ -45,7 +43,6 @@ module.exports = {
 
     try {
       const form = await Form.findOne({ _id: id }).populate('aluno');
-      console.log(form)
       res.status(200).json(form)
     } catch (error) {
       res.status(400).json(error)  
@@ -55,13 +52,11 @@ module.exports = {
   async changeFormStatus(req, res){
     try {
       const {id, status, obs} = req.body
-      console.log(req.body)
       const form =  await Form.findOne({ _id: id });
       form.obs = obs;
       form.status = status;
       form.aprovado = status;
       form.save()
-      console.log(form)
       res.status(200).json(form)
     } catch (error) {
       console.log(error)
